@@ -49,25 +49,25 @@
             "serverSide": true,
             'aoColumnDefs': [{
                     'bSortable': false,
-                    'aTargets': [0, 1, -1] /* 1st one, start by the right */
+                    'aTargets': [0, 1, -1] 
                 }],
             "order": [[0, "desc"]],
             "ajax": {
-                url: "<?= ADMIN_PANEL_URL . "orders/ajax_orders_list?status=".$this->input->get("status"); ?>", // json datasource
-                type: "post", // method  , by default get
-                error: function () {  // error handling
+                url: "<?= ADMIN_PANEL_URL . "orders/ajax_orders_list?status=".$this->input->get("status"); ?>", 
+                type: "post", 
+                error: function () {  
                     jQuery("." + table + "-error").html("");
                     jQuery("#" + table + "_processing").css("display", "none");
                 }
             }
         });
         jQuery("#" + table + "_filter").css("display", "none");
-        $('.search-input-text').on('keyup click', function () {   // for text boxes
-            var i = $(this).attr('data-column');  // getting column index
-            var v = $(this).val();  // getting search input value
+        $('.search-input-text').on('keyup click', function () {   
+            var i = $(this).attr('data-column');  
+            var v = $(this).val();  
             dataTable.columns(i).search(v).draw();
         });
-        $('.search-input-select').on('change', function () {   // for select box
+        $('.search-input-select').on('change', function () {   
             var i = $(this).attr('data-column');
             var v = $(this).val();
             dataTable.columns(i).search(v).draw();
